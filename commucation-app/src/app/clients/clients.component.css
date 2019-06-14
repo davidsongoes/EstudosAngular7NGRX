@@ -1,0 +1,10 @@
+mat-card {
+    max-width: 400px;
+    margin: 20px;
+}
+mat-form-field {
+    padding-right: 5px;
+}
+mat-card-subtitle {
+    margin-left: 10px;
+}

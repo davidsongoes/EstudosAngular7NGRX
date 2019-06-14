@@ -1,0 +1,22 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Form of Clients</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-form-field floatPlaceholder="auto">
+            <input matInput name="name" [(ngModel)]="name" placeholder="First Name">
+        </mat-form-field>
+        <mat-form-field floatPlaceholder="auto">
+          <input matInput name="age" type="number" [(ngModel)]="age" placeholder="Age">
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions align="start">
+        <button mat-mini-fab color="primary" (click)="save()"><mat-icon color="warn">check</mat-icon></button>
+    </mat-card-actions>
+    <mat-card-footer>
+      <mat-card-subtitle>List of Clients</mat-card-subtitle>
+      <mat-list dense>
+          <app-item-client *ngFor="let client of clients; let i=index;" [client]="client" (deleteClientEvent)="destroyClient(i)" (updateClientEvent)="editClient($event, i)"></app-item-client>
+      </mat-list>
+    </mat-card-footer>
+</mat-card>

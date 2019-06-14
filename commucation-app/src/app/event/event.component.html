@@ -1,0 +1,13 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Event</mat-card-title>
+        <mat-card-subtitle>Emitter</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <h3>Value: {{ value }}</h3>
+        <app-child-item [title]="title" (incDesc)="actionEvent($event)"></app-child-item>
+    </mat-card-content>
+    <mat-card-actions align="start">
+        <button mat-button color="accent">Send</button>
+    </mat-card-actions>
+</mat-card>

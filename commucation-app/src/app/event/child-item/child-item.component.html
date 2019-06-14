@@ -1,0 +1,15 @@
+<h3>{{ title }}</h3>
+<div>
+  <button mat-raised-button color="primary" (click)="incDescClick(2)">
+    <mat-icon>exposure_plus_2</mat-icon>
+  </button>
+  <button mat-raised-button color="primary" (click)="incDescClick(1)">
+    <mat-icon>exposure_plus_1</mat-icon>
+  </button>
+  <button mat-raised-button color="warn" (click)="incDescClick(-1)">
+    <mat-icon>exposure_neg_1</mat-icon>
+  </button>
+  <button mat-raised-button color="warn" (click)="incDescClick(-2)">
+    <mat-icon>exposure_neg_2</mat-icon>
+  </button>
+</div>
