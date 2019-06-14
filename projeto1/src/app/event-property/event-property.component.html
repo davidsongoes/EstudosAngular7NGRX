@@ -1,0 +1,12 @@
+<section>
+  <mat-card style="max-width: 400px; margin-left: 30px;">
+    <mat-card-content>
+      <mat-form-field>
+        <input color="accent" (input)="inputEvent($event)" [value]="inputName" matInput placeholder="First Name">
+      </mat-form-field>
+      <mat-card-actions>
+        Name: {{inputName}}
+      </mat-card-actions>
+    </mat-card-content>
+  </mat-card>
+</section>
