@@ -6,6 +6,8 @@ import { BasicComponent } from './basic/basic.component';
 import { ColdObservablesComponent } from './cold-observables/cold-observables.component';
 import { HotObsevablesIntroComponent } from './hot-obsevables-intro/hot-obsevables-intro.component';
 import { HotObservablesComponent } from './hot-observables/hot-observables.component';
+import { SubjectsComponent } from './subjects/subjects.component';
+import { SubjectChildComponent } from './subjects/subject-child/subject-child.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,9 @@ import { HotObservablesComponent } from './hot-observables/hot-observables.compo
     BasicComponent,
     ColdObservablesComponent,
     HotObsevablesIntroComponent,
-    HotObservablesComponent
+    HotObservablesComponent,
+    SubjectsComponent,
+    SubjectChildComponent
   ],
   imports: [
     BrowserModule
