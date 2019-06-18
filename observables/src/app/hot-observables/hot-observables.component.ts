@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Observer, Subject, ConnectableObservable } from 'rxjs';
-import { publish, refCount } from 'rxjs/operators';
+import { publish, refCount, share } from 'rxjs/operators';
 
 @Component({
   selector: 'app-hot-observables',
@@ -34,7 +34,30 @@ export class HotObservablesComponent implements OnInit {
       }
     );
     // this.usingSubjects();
-    this.usingPublish();
+    // this.usingPublish();
+    this.usingShare();
+  }
+
+  public usingShare(): void {
+
+const multcasted = this.myObservable.pipe(share());
+      // Subscribe 1
+      this.s1 = 'Waiting for interval...';
+      setTimeout(() => {
+        multcasted.subscribe((_n) => {
+          this.n1 = _n;
+          this.s1 = 'OK';
+        });
+      }, 2000);
+  
+      // Subscribe 2
+      this.s2 = 'Waiting for interval...';
+      setTimeout(() => {
+        multcasted.subscribe((_n) => {
+          this.n2 = _n;
+          this.s2 = 'OK';
+        });
+      }, 4000);
   }
 
   public usingPublish(): void {
