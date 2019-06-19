@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, Observer, from, of, interval, timer } from 'rxjs';
+import { Observable, Observer, from, of, interval, timer, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-basic-creation',
@@ -7,6 +7,8 @@ import { Observable, Observer, from, of, interval, timer } from 'rxjs';
   styleUrls: ['./basic-creation.component.css']
 })
 export class BasicCreationComponent implements OnInit {
+
+  subscription: Subscription = new Subscription();
 
   constructor() { }
 
@@ -36,12 +38,20 @@ export class BasicCreationComponent implements OnInit {
 
   public intervalClick(): void {
     const source = interval(1000); //executa em intervalos conforme tempo passado no parâmetro.
-    source.subscribe((v) => console.log(v));
+    const subscription = source.subscribe((v) => console.log(v));
+    this.subscription.add(subscription); //adicionando subscrição do interval  em this.subscription.
+    console.log('Subscription: ', this.subscription);
   }
 
   public timerClick(): void {
     // const source = timer(2000); //executa somente uma vez depois do delay.
     const source = timer(3000, 1000); //executa depois do delay e fica executando conforme tempo passado no segundo parâmetro.
-    source.subscribe((v) => console.log(v));
+    const subscription = source.subscribe((v) => console.log(v));
+    this.subscription.add(subscription); //adicionando subscrição do timer  em this.subscription.
+    console.log('Subscription: ', this.subscription);
+  }
+
+  public unsubscribe(): void {
+    this.subscription.unsubscribe(); //dessubscrever de todas as subscrições que foram feitas na propriedade.
   }
 }
