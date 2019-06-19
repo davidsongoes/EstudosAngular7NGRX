@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, Observer, from, of } from 'rxjs';
+import { Observable, Observer, from, of, interval } from 'rxjs';
 
 @Component({
   selector: 'app-basic-creation',
@@ -32,6 +32,11 @@ export class BasicCreationComponent implements OnInit {
 
   public ofClick(): void {
     of([1,2,3,4,5,{x:10, y: 20}]).subscribe((v) => console.log(v));
+  }
+
+  public intervalClick(): void {
+    const source = interval(1000);
+    source.subscribe((v) => console.log(v));
   }
 
 }
