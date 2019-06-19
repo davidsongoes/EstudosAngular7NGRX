@@ -51,7 +51,8 @@ export class BasicCreationComponent implements OnInit {
     console.log('Subscription: ', this.subscription);
   }
 
-  public unsubscribe(): void {
+  public unsubscribeClick(): void {
     this.subscription.unsubscribe(); //dessubscrever de todas as subscrições que foram feitas na propriedade.
+    this.subscription = new Subscription(); //nova instância.
   }
 }
