@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { from, fromEvent, interval, Observable, Observer, Subscription, Subject } from 'rxjs';
-import { map, delay, filter, tap, take, first, last, debounceTime, takeWhile } from 'rxjs/operators';
+import { from, fromEvent, interval, Observable, Observer, Subscription, Subject, timer } from 'rxjs';
+import { map, delay, filter, tap, take, first, last, debounceTime, takeWhile, takeUntil } from 'rxjs/operators';
 import { MatRipple } from '@angular/material';
 
 @Component({
@@ -129,10 +129,10 @@ export class OperatorsComponent implements OnInit {
   public takeWhileClick(): void {
     interval(500)
       .pipe(
-        takeWhile((value,index) => (value<5))
+        takeWhile((value, index) => (value < 5))
       )
       .subscribe(
-        (i) => console.log('takeWhile: ',i),
+        (i) => console.log('takeWhile: ', i),
         (error) => console.log(error),
         () => console.log('Completed')
       )
@@ -140,5 +140,16 @@ export class OperatorsComponent implements OnInit {
 
   public takeUntilClick(): void {
 
+    let dueTime$ = timer(5000);
+
+    interval(500)
+      .pipe(
+        takeUntil(dueTime$)
+      )
+      .subscribe(
+        (i) => console.log('takeWhile: ', i),
+        (error) => console.log(error),
+        () => console.log('Completed')
+      )
   }
 }
