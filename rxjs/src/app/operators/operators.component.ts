@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { from, fromEvent, interval, Observable, Observer, Subscription } from 'rxjs';
+import { from, fromEvent, interval, Observable, Observer, Subscription, Subject } from 'rxjs';
 import { map, delay, filter, tap, take, first, last, debounceTime } from 'rxjs/operators';
 import { MatRipple } from '@angular/material';
 
@@ -11,6 +11,7 @@ import { MatRipple } from '@angular/material';
 export class OperatorsComponent implements OnInit {
 
   @ViewChild(MatRipple, {static: true}) ripple: MatRipple;
+  private searchInput: string = '';
 
   constructor() { }
 
@@ -92,7 +93,7 @@ export class OperatorsComponent implements OnInit {
   }
 
   public debounceTimeClick(): void {
-    fromEvent(document, 'click')
+    const debouceSubscription = fromEvent(document, 'click')
     .pipe(
       tap((e) => console.log('Click')),
       debounceTime(1000)
@@ -109,5 +110,19 @@ export class OperatorsComponent implements OnInit {
       centered: true
     });
     rippleRef.fadeOut();
+  }
+
+  public searchEntry$: Subject<string> = new Subject<string>();
+  public searchBy_UsingDebounce(event): void {
+    this.searchEntry$.next(this.searchInput);
+  }
+
+  public debounceTimeSearch(): void {
+    fromEvent(document, 'click')
+    this.searchEntry$
+    .pipe(
+      debounceTime(1000)
+    )
+    .subscribe((s) => console.log(s));
   }
 }

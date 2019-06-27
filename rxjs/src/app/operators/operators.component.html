@@ -4,9 +4,17 @@
   <button mat-button color="primary" (click)="tapClick()">tap</button>
   <button mat-button color="primary" (click)="takeClick()">take</button>
   <button mat-button color="primary" (click)="debounceTimeClick()">debounceTime</button>
+  <button mat-button color="primary" (click)="debounceTimeSearch()">debounceSearch</button>
 </div>
-<div class="debounce-area"
-matRipple matRippleColor="rgba(240,166,166,0.8)"
-matRippleRadius="100">
-Davidson
+<div class="debounce-area" matRipple matRippleColor="rgba(240,166,166,0.8)" matRippleRadius="100">
+  Ripple
 </div>
+<br>
+<mat-divider></mat-divider>
+<mat-form-field>
+  <mat-label>
+    Search By:
+  </mat-label>
+  <input matInput placeholder="Type something" autocomplete="off" (keyup)="searchBy_UsingDebounce($event)"
+    [(ngModel)]="searchInput">
+</mat-form-field>
