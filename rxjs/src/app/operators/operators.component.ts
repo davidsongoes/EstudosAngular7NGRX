@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { from, fromEvent, interval, Observable, Observer, Subscription, Subject } from 'rxjs';
-import { map, delay, filter, tap, take, first, last, debounceTime } from 'rxjs/operators';
+import { map, delay, filter, tap, take, first, last, debounceTime, takeWhile } from 'rxjs/operators';
 import { MatRipple } from '@angular/material';
 
 @Component({
@@ -10,7 +10,7 @@ import { MatRipple } from '@angular/material';
 })
 export class OperatorsComponent implements OnInit {
 
-  @ViewChild(MatRipple, {static: true}) ripple: MatRipple;
+  @ViewChild(MatRipple, { static: true }) ripple: MatRipple;
   private searchInput: string = '';
 
   constructor() { }
@@ -52,56 +52,56 @@ export class OperatorsComponent implements OnInit {
 
   public tapClick(): void {
     interval(1000)
-    .pipe(
-      tap((i) => console.warn('Before Filter: ', i)),
-      filter((i) => i % 2 == 0),
-      tap((i) => console.warn('After Filter: ', i)),
-      map((i) => "Value: " + i),
-      tap((i) => console.warn('After Map: ', i)),
-      delay(1000)
-    )
-    .subscribe((v) => console.log(v));
+      .pipe(
+        tap((i) => console.warn('Before Filter: ', i)),
+        filter((i) => i % 2 == 0),
+        tap((i) => console.warn('After Filter: ', i)),
+        map((i) => "Value: " + i),
+        tap((i) => console.warn('After Map: ', i)),
+        delay(1000)
+      )
+      .subscribe((v) => console.log(v));
   }
 
   public takeClick(): void {
-    const observable = new Observable((observer) =>{
+    const observable = new Observable((observer) => {
       let i;
-      for(i=0;i<20;i++)
-      setTimeout(() => observer.next(Math.floor(Math.random() * 100)), i* 100);
+      for (i = 0; i < 20; i++)
+        setTimeout(() => observer.next(Math.floor(Math.random() * 100)), i * 100);
       // setTimeout(() => observer.complete(), i*100);
     });
-    const s:Subscription = observable
-    .pipe(
-      tap((i) => console.log(i)),
-      // take(10),
-      first(),
-      // last()
-    )
-    .subscribe(
-      (v) => console.log('Output', v),
-      (error) => console.log(error),
-      () => console.log('Completed!')
+    const s: Subscription = observable
+      .pipe(
+        tap((i) => console.log(i)),
+        // take(10),
+        first(),
+        // last()
+      )
+      .subscribe(
+        (v) => console.log('Output', v),
+        (error) => console.log(error),
+        () => console.log('Completed!')
       );
 
-      const interval = setInterval(() => {
-        console.log('Checking...');
-        if(s.closed){
-          console.warn('Subscription Closed!');
-          clearInterval(interval);
-        }
-      }, 200);
+    const interval = setInterval(() => {
+      console.log('Checking...');
+      if (s.closed) {
+        console.warn('Subscription Closed!');
+        clearInterval(interval);
+      }
+    }, 200);
   }
 
   public debounceTimeClick(): void {
     const debouceSubscription = fromEvent(document, 'click')
-    .pipe(
-      tap((e) => console.log('Click')),
-      debounceTime(1000)
-    )
-    .subscribe((e: MouseEvent) => {
-      console.log('Click with debounceTime: ', e);
-      this.launchRiple();
-    })
+      .pipe(
+        tap((e) => console.log('Click')),
+        debounceTime(1000)
+      )
+      .subscribe((e: MouseEvent) => {
+        console.log('Click with debounceTime: ', e);
+        this.launchRiple();
+      })
   }
 
   public launchRiple(): void {
@@ -120,9 +120,25 @@ export class OperatorsComponent implements OnInit {
   public debounceTimeSearch(): void {
     fromEvent(document, 'click')
     this.searchEntry$
-    .pipe(
-      debounceTime(1000)
-    )
-    .subscribe((s) => console.log(s));
+      .pipe(
+        debounceTime(1000)
+      )
+      .subscribe((s) => console.log(s));
+  }
+
+  public takeWhileClick(): void {
+    interval(500)
+      .pipe(
+        takeWhile((value,index) => (value<5))
+      )
+      .subscribe(
+        (i) => console.log('takeWhile: ',i),
+        (error) => console.log(error),
+        () => console.log('Completed')
+      )
+  }
+
+  public takeUntilClick(): void {
+
   }
 }
