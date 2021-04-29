@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { fromEvent } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-drag-and-drop',
@@ -25,7 +26,11 @@ export class DragAndDropComponent implements OnInit {
       let x = eD.screenX;
       let y = eD.screenY;
 
-      mouseMove.subscribe((eM: MouseEvent) => {
+      mouseMove
+      .pipe(
+        takeUntil(mouseUp)
+      )
+      .subscribe((eM: MouseEvent) => {
         // console.log('Mouse Move: ',eM);
         let offSetX = x - eM.screenX;
         let offSetY = y - eM.screenY;
