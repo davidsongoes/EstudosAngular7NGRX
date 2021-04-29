@@ -1,5 +1,5 @@
 <div fxLayout="row" fxLayoutAlign="space-around center" fxFill>
-  <div fxFlex="20">
+  <div fxFlex="30">
     <mat-radio-group [(ngModel)]="option" fxLayout="column" fxLayoutAlign="center start">
       <mat-radio-button value="basic-creation">Component</mat-radio-button>
       <br>
@@ -10,15 +10,18 @@
       <mat-radio-button value="errorHandling">ErrorHandling</mat-radio-button>
       <br>
       <mat-radio-button value="dragAndDrop">DragAndDrop</mat-radio-button>
+      <br>
+      <mat-radio-button value="unsubscribe">Unsubscribe</mat-radio-button>
     </mat-radio-group>
   </div>
-  <div fxFlwx="70" fxLayout="column" fxLayoutAlign="center start">
+  <div fxFlwx="70" fxLayout="column" fxLayoutAlign="center center">
     <ng-container [ngSwitch]="option">
       <app-basic-creation *ngSwitchCase="'basic-creation'" fxFill></app-basic-creation>
       <app-operators *ngSwitchCase="'operators'" fxFill></app-operators>
       <app-async *ngSwitchCase="'async'" fxFill></app-async>
       <app-error-handling *ngSwitchCase="'errorHandling'" fxFill></app-error-handling>
       <app-drag-and-drop *ngSwitchCase="'dragAndDrop'" fxFill></app-drag-and-drop>
+      <app-unsubscribe *ngSwitchCase="'unsubscribe'" fxFill></app-unsubscribe>
     </ng-container >
   </div>
 </div>

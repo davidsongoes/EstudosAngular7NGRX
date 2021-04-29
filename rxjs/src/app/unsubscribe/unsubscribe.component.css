@@ -1,0 +1,10 @@
+.green{
+    background-color: greenyellow;
+    box-shadow: 0px 0px 15px greenyellow;
+    transition: 500ms;
+}
+.red{
+    background-color: red;
+    box-shadow: 0px 0px 15px red;
+    transition: 500ms;
+}
