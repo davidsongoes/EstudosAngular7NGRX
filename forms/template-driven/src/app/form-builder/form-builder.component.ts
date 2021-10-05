@@ -8,20 +8,20 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 })
 export class FormBuilderComponent implements OnInit {
 
-  clientForm!: FormGroup;
+  clientForm = this.fb.group({
+    firstName: [''],
+    lastName: [''],
+    adress: this.fb.group({
+      street: [''],
+      city: [''],
+      state: [''],
+    })
+  })
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.clientForm = this.fb.group({
-      firstName: [''],
-      lastName: [''],
-      adress: this.fb.group({
-        street: [''],
-        city: [''],
-        state: [''],
-      })
-    })
+   
   }
 
   onSubmit(): void{

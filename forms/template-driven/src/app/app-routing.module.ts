@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { FormArrayComponent } from './form-array/form-array.component';
 import { FormBuilderComponent } from './form-builder/form-builder.component';
 import { FormControlComponent } from './form-control/form-control.component';
 import { FormGroupComponent } from './form-group/form-group.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'form-control', component: FormControlComponent},
   { path: 'form-group', component: FormGroupComponent},
   { path: 'form-builder', component: FormBuilderComponent},
+  { path: 'form-array', component: FormArrayComponent},
   { path: '', redirectTo: '/', pathMatch: 'full' },
 
 ];

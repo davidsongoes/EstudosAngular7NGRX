@@ -15,6 +15,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { FormControlComponent } from './form-control/form-control.component';
 import { FormGroupComponent } from './form-group/form-group.component';
 import { FormBuilderComponent } from './form-builder/form-builder.component';
+import { FormArrayComponent } from './form-array/form-array.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { FormBuilderComponent } from './form-builder/form-builder.component';
     FormControlComponent,
     FormGroupComponent,
     FormBuilderComponent,
+    FormArrayComponent
   ],
   imports: [
     BrowserModule,

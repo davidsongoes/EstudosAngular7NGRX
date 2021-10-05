@@ -1,0 +1,140 @@
+<div layout="column" layout-fill>
+  <div align="center" layout="row" layout-align="center center">
+    <mat-card
+      class="mat-elevation-z8"
+      flex="80"
+      style="margin-top: 60px; width: 800px"
+    >
+      <mat-card-title>New Client</mat-card-title>
+      <mat-card-subtitle> </mat-card-subtitle>
+      <mat-card-content fxLayout="column" fxLayoutAlign="stretch">
+        <form
+          fxLayout="column"
+          fxLayoutAlign="start stretch"
+          [formGroup]="clientForm"
+          (ngSubmit)="onSubmit()"
+        >
+          <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between  begin">
+            <mat-form-field fxFlex="45">
+              <input
+                formControName="firstName"
+                matInput
+                type="text"
+                placeholder="First Name"
+              />
+            </mat-form-field>
+            <mat-form-field fxFlex="45">
+              <input
+                formControName="lastname"
+                matInput
+                type="text"
+                placeholder="Last Name"
+              />
+            </mat-form-field>
+          </div>
+          <div fxFlex="100" fxLayoutAlign="begin">
+            <h4>Address:</h4>
+          </div>
+          <div
+            fxFlex="100"
+            fxLayout="row"
+            fxLayoutAlign="space-between begin"
+            formGroupName="adress"
+          >
+            <mat-form-field fxFlex="50">
+              <input
+                formControlName="street"
+                matInput
+                type="text"
+                placeholder="Street"
+              />
+            </mat-form-field>
+            <mat-form-field fxFlex="30">
+              <input
+                formControlName="city"
+                matInput
+                type="text"
+                placeholder="City"
+              />
+            </mat-form-field>
+            <mat-form-field fxFlex="10">
+              <input
+                formControlName="state"
+                matInput
+                type="text"
+                placeholder="State"
+              />
+            </mat-form-field>
+          </div>
+          <div fxFlex="100" fxLayoutAlign="begin">
+            <h4>Telephones:</h4>
+          </div>
+
+          <div
+            fxFlex="100"
+            fxLayout="row wrap"
+            fxLayoutAlign="start start"
+            fxLayoutGap="20px"
+          >
+            <mat-form-field fxFlex="30">
+              <input
+                formControlName="phone"
+                matInput
+                type="text"
+                placeholder="Telephone"
+              />
+            </mat-form-field>
+            <button mat-fab type="button"><mat-icon>add</mat-icon></button>
+          </div>
+          <div fxFlex="100" fxLayoutAlign="begin">
+            <h4>Children:</h4>
+          </div>
+          <div
+            fxFlex="100"
+            fxLayout="column"
+            fxLayoutAlign="space-between start"
+          >
+            <div
+              fxFlex="100"
+              fxLayout="row"
+              fxLayoutAlign="space-between begin"
+              formGroupName="children"
+            >
+              <mat-form-field fxFlex="60">
+                <input
+                  formControlName="name"
+                  matInput
+                  type="text"
+                  placeholder="Name"
+                />
+              </mat-form-field>
+              <mat-form-field fxFlex="20">
+                <input
+                  formControlName="age"
+                  matInput
+                  type="text"
+                  placeholder="Age"
+                />
+              </mat-form-field>
+              <button mat-fab type="button"><mat-icon>add</mat-icon></button>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center">
+            <button
+              routerLink="/"
+              mat-raised-button
+              color="accent"
+              type="button"
+            >
+              <mat-icon>arrow_back</mat-icon>Back
+            </button>
+            <button mat-raised-button color="primary" type="submit">
+              <mat-icon>done</mat-icon>Submit
+            </button>
+          </div>
+        </form>
+      </mat-card-content>
+      <mat-card-footer> </mat-card-footer>
+    </mat-card>
+  </div>
+</div>
