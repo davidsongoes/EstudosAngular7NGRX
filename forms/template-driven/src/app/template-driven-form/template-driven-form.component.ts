@@ -19,11 +19,14 @@ export class TemplateDrivenFormComponent implements OnInit {
     phone2: '',
   };
 
+  states = ['SP', 'DF', 'SC', 'RS', 'PE', 'MT']
+
   constructor() {}
 
   ngOnInit(): void {}
 
   onSubmit() {
     console.log('submit');
+    console.log(this.client);
   }
 }
