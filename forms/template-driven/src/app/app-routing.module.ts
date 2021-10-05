@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { FormBuilderComponent } from './form-builder/form-builder.component';
 import { FormControlComponent } from './form-control/form-control.component';
 import { FormGroupComponent } from './form-group/form-group.component';
 import { FormNativeValidationComponent } from './form-native-validation/form-native-validation.component';
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'forms-validation', component: FormValidationComponent},
   { path: 'form-control', component: FormControlComponent},
   { path: 'form-group', component: FormGroupComponent},
+  { path: 'form-builder', component: FormBuilderComponent},
   { path: '', redirectTo: '/', pathMatch: 'full' },
 
 ];
