@@ -5,7 +5,7 @@
       flex="80"
       style="margin-top: 60px; width: 800px"
     >
-      <mat-card-title>New Client</mat-card-title>
+      <mat-card-title>Form Array</mat-card-title>
       <mat-card-subtitle> </mat-card-subtitle>
       <mat-card-content fxLayout="column" fxLayoutAlign="stretch">
         <form
@@ -17,7 +17,7 @@
           <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between  begin">
             <mat-form-field fxFlex="45">
               <input
-                formControName="firstName"
+                formControlName="firstName"
                 matInput
                 type="text"
                 placeholder="First Name"
@@ -25,7 +25,7 @@
             </mat-form-field>
             <mat-form-field fxFlex="45">
               <input
-                formControName="lastname"
+                formControlName="lastName"
                 matInput
                 type="text"
                 placeholder="Last Name"
@@ -68,56 +68,76 @@
           </div>
           <div fxFlex="100" fxLayoutAlign="begin">
             <h4>Telephones:</h4>
+            <button
+              (click)="addPhone()"
+              mat-mini-fab
+              type="button"
+              style="margin-left: 20px"
+            >
+              <mat-icon>add</mat-icon>
+            </button>
           </div>
-
           <div
             fxFlex="100"
             fxLayout="row wrap"
             fxLayoutAlign="start start"
             fxLayoutGap="20px"
           >
-            <mat-form-field fxFlex="30">
+            <mat-form-field
+              fxFlex="30"
+              formArrayName="phones"
+              *ngFor="let c of phones.controls; let i = index"
+            >
               <input
-                formControlName="phone"
+                [formControlName]="i"
                 matInput
                 type="text"
                 placeholder="Telephone"
               />
             </mat-form-field>
-            <button mat-fab type="button"><mat-icon>add</mat-icon></button>
           </div>
-          <div fxFlex="100" fxLayoutAlign="begin">
+          <div fxFlex="100" fxLayoutAlign="begin" style="margin-top: 20px">
             <h4>Children:</h4>
+            <button
+              mat-mini-fab
+              type="button"
+              (click)="addChild()"
+              style="margin-left: 20px"
+            >
+              <mat-icon>add</mat-icon>
+            </button>
           </div>
           <div
             fxFlex="100"
             fxLayout="column"
             fxLayoutAlign="space-between start"
+            formArrayName="childrens"
           >
-            <div
-              fxFlex="100"
-              fxLayout="row"
-              fxLayoutAlign="space-between begin"
-              formGroupName="children"
-            >
-              <mat-form-field fxFlex="60">
-                <input
-                  formControlName="name"
-                  matInput
-                  type="text"
-                  placeholder="Name"
-                />
-              </mat-form-field>
-              <mat-form-field fxFlex="20">
-                <input
-                  formControlName="age"
-                  matInput
-                  type="text"
-                  placeholder="Age"
-                />
-              </mat-form-field>
-              <button mat-fab type="button"><mat-icon>add</mat-icon></button>
-            </div>
+            <ng-container *ngFor="let c of childrens.controls; let i = index">
+              <div
+                fxFlex="100"
+                fxLayout="row"
+                fxLayoutAlign="space-between begin"
+                [formGroupName]="i"
+              >
+                <mat-form-field fxFlex="60">
+                  <input
+                    formControlName="name"
+                    matInput
+                    type="text"
+                    placeholder="Name"
+                  />
+                </mat-form-field>
+                <mat-form-field fxFlex="20">
+                  <input
+                    formControlName="age"
+                    matInput
+                    type="text"
+                    placeholder="Age"
+                  />
+                </mat-form-field>
+              </div>
+            </ng-container>
           </div>
           <div fxLayout="row" fxLayoutAlign="space-around center">
             <button
