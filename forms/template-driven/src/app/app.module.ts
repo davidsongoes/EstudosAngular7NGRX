@@ -16,7 +16,7 @@ import { FormControlComponent } from './form-control/form-control.component';
 import { FormGroupComponent } from './form-group/form-group.component';
 import { FormBuilderComponent } from './form-builder/form-builder.component';
 import { FormArrayComponent } from './form-array/form-array.component';
-
+import { ReactiveFormValidationComponent } from './reactive-form-validation/reactive-form-validation.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,8 @@ import { FormArrayComponent } from './form-array/form-array.component';
     FormControlComponent,
     FormGroupComponent,
     FormBuilderComponent,
-    FormArrayComponent
+    FormArrayComponent,
+    ReactiveFormValidationComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,10 +38,9 @@ import { FormArrayComponent } from './form-array/form-array.component';
     MaterialModule,
     FlexLayoutModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [
-    {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'},
-  ],  bootstrap: [AppComponent]
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
