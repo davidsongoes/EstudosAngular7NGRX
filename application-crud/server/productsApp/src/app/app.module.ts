@@ -9,9 +9,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductComponent } from './models/product/product.component';
 import { DepartmentComponent } from './models/department/department.component';
+import { HomeComponent } from './home/home.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
-  declarations: [AppComponent, ProductComponent, DepartmentComponent],
+  declarations: [
+    AppComponent,
+    ProductComponent,
+    DepartmentComponent,
+    HomeComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -20,6 +27,7 @@ import { DepartmentComponent } from './models/department/department.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FlexLayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

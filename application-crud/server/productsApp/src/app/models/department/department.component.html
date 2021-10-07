@@ -1,1 +1,25 @@
-<p>department works!</p>
+<mat-card>
+  <mat-card-title>Departments Forms</mat-card-title>
+  <mat-card-content>
+    <div fxLayout="column" fxLayoutAlign="space-between">
+      <mat-form-field appearance="fill">
+        <mat-label>Department Name</mat-label>
+        <input matInput [(ngModel)]="depName" type="text" />
+        <mat-hint>The department name</mat-hint>
+      </mat-form-field>
+      <div fxLayout="row" fxLayoutAlign="end" style="margin-top: 20px">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="save()"
+          style="margin-right: 5px"
+        >
+          Save
+        </button>
+        <button mat-raised-button color="warn" (click)="cancel()">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
