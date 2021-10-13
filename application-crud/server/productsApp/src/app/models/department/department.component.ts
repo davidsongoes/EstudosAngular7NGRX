@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Department } from './department';
 
 @Component({
   selector: 'app-department',
@@ -7,6 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DepartmentComponent implements OnInit {
   depName = '';
+  departments: Department[] = [
+    { name: 'dep1', _id: '1' },
+    { name: 'dep2', _id: '2' },
+    { name: 'dep3', _id: '3' },
+  ];
 
   constructor() {}
 
@@ -18,5 +24,13 @@ export class DepartmentComponent implements OnInit {
 
   cancel(): void {
     console.log('cancel');
+  }
+
+  edit(dep: Department): void {
+    console.log('Edit: ', dep);
+  }
+
+  delete(dep: Department): void {
+    console.log('Delete: ', dep);
   }
 }

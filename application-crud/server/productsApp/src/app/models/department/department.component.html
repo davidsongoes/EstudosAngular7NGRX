@@ -7,7 +7,7 @@
         <input matInput [(ngModel)]="depName" type="text" />
         <mat-hint>The department name</mat-hint>
       </mat-form-field>
-      <div fxLayout="row" fxLayoutAlign="end" style="margin-top: 20px">
+      <div fxLayout="row" fxLayoutAlign="end end" style="margin-top: 20px">
         <button
           mat-raised-button
           color="primary"
@@ -21,5 +21,18 @@
         </button>
       </div>
     </div>
+    <mat-list>
+      <h3 mat-subheader>Departments</h3>
+      <mat-list-item *ngFor="let dep of departments">
+        <mat-icon mat-list-icon>folder</mat-icon>
+        <h4 mat-line>{{ dep.name }}</h4>
+        <button mat-icon-button color="accent" (click)="edit(dep)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="delete(dep)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-list>
   </mat-card-content>
 </mat-card>
