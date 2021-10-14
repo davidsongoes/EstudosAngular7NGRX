@@ -4,6 +4,6 @@ export interface Product {
   name: string;
   stock: number;
   price: number;
-  departments: Department[];
-  _id?: string;
+  departments: Department[] | number[];
+  id?: string;
 }
