@@ -1,0 +1,25 @@
+{
+  "departments": [
+    {
+      "name": "Dep1",
+      "id": 1
+    },
+    {
+      "name": "Dep2",
+      "id": 2
+    },
+    {
+      "name": "Dep3",
+      "id": 3
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Prod1",
+      "price": 1,
+      "stock": 1,
+      "departments": [1,2]
+    }
+  ]
+}
