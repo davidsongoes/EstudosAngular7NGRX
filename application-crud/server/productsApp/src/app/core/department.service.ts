@@ -1,26 +1,29 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of, timer } from 'rxjs';
 import { Department } from '../models/department/department';
-import { tap } from 'rxjs/operators';
+import { delay, tap } from 'rxjs/operators';
+import { ProductService } from './product.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DepartmentService {
   readonly url = 'http://localhost:3000/departments';
+  readonly urlProduct = 'http://localhost:3000/products';
 
   private departmentSubject$: BehaviorSubject<any[]> = new BehaviorSubject<
     Department[]
   >([]);
   private loaded = false;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
   get(): Observable<Department[]> {
     if (!this.loaded) {
       this.http
-        .get<Department[]>(this.url)
+        .get<Department[]>(`${this.url}`)
         .pipe(tap((response) => console.log(response)))
         .subscribe(this.departmentSubject$);
       this.loaded = true;
@@ -43,10 +46,10 @@ export class DepartmentService {
   delete(data: Department): Observable<any> {
     return this.http.delete(`${this.url}/${data.id}`).pipe(
       tap(() => {
-        let departments = this.departmentSubject$.getValue();
-        let i = departments.findIndex((d) => d.id === data.id);
+        let departmentsArray = this.departmentSubject$.getValue();
+        let i = departmentsArray.findIndex((d) => d.id === data.id);
         if (i >= 0) {
-          departments.splice(i, 1);
+          departmentsArray.splice(i, 1);
         }
       })
     );

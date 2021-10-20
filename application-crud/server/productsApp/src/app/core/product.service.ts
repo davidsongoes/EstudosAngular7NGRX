@@ -22,10 +22,10 @@ export class ProductService {
     private departmentService: DepartmentService
   ) {}
 
-  get(): Observable<Product[]> {
+  get(flag?: string): Observable<Product[]> {
     if (!this.loaded) {
       combineLatest([
-        this.http.get<Product[]>(this.url),
+        this.http.get<Product[]>(`${this.url}`),
         this.departmentService.get(),
       ])
         .pipe(
@@ -90,5 +90,9 @@ export class ProductService {
           }
         })
       );
+  }
+
+  getDepartmentsOfTheProducts(id: number): Observable<Department[]> {
+    return this.http.get<Department[]>(`${this.url}?departments=${id}`);
   }
 }

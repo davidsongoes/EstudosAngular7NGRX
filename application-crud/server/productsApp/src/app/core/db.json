@@ -11,6 +11,14 @@
     {
       "name": "Dep3",
       "id": 3
+    },
+    {
+      "name": "Dep4",
+      "id": 4
+    },
+    {
+      "name": "Dep5",
+      "id": 5
     }
   ],
   "products": [
@@ -19,7 +27,36 @@
       "name": "Prod1",
       "price": 1,
       "stock": 1,
-      "departments": [1,2]
+      "departments": [
+        1
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Prod2",
+      "stock": 1,
+      "price": 2,
+      "departments": [
+        2
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Prod3",
+      "stock": 2,
+      "price": 10,
+      "departments": [
+        3
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Prod4",
+      "stock": 2,
+      "price": 10,
+      "departments": [
+        4
+      ]
     }
   ]
 }

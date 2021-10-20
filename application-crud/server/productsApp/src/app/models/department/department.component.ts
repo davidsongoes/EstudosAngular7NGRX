@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { of, Subject } from 'rxjs';
+import { mergeMap, switchMap, takeUntil } from 'rxjs/operators';
 import { DepartmentService } from 'src/app/core/department.service';
+import { ProductService } from 'src/app/core/product.service';
 import { Department } from './department';
 
 @Component({
@@ -18,6 +19,7 @@ export class DepartmentComponent implements OnInit {
 
   constructor(
     private departmentService: DepartmentService,
+    private productService: ProductService,
     private snackBar: MatSnackBar
   ) {}
 
@@ -66,27 +68,38 @@ export class DepartmentComponent implements OnInit {
     console.log(dep);
     this.depName = dep.name;
     this.depEdit = dep;
-    // this.departmentService.add(dep).subscribe(
-    //   (response) => {
-    //     console.log(response);
-    //   },
-    //   (err) => console.log(err)
-    // );
-    // this.clearFields();
-    // console.log('Edit: ', dep);
   }
 
-  delete(dep: Department): void {
-    this.departmentService.delete(dep).subscribe(
-      () => {
-        this.notify('Deleted');
-        console.log('Delete: ', dep);
-      },
-      (err) => {
-        this.notify('Error');
-        console.error(err);
-      }
-    );
+  delete(dep: Department) {
+    let departments = [];
+    if (dep.id) {
+      let id = dep.id;
+      this.productService
+        .getDepartmentsOfTheProducts(id)
+        .pipe(
+          switchMap((department) =>
+            department.length == 0
+              ? this.departmentService.delete(dep)
+              : of(false)
+          )
+        )
+        .subscribe(
+          (resp) => {
+            if (resp == false) {
+              this.notify(
+                'Cannot delete, department is linked to one or more products!'
+              );
+            } else {
+              this.notify('Deleted');
+              console.log('Delete: ', dep);
+            }
+          },
+          (err) => {
+            this.notify('Error');
+            console.error(err);
+          }
+        );
+    }
   }
 
   clearFields(): void {
