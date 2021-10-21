@@ -71,7 +71,6 @@ export class DepartmentComponent implements OnInit {
   }
 
   delete(dep: Department) {
-    let departments = [];
     if (dep.id) {
       let id = dep.id;
       this.productService

@@ -2,7 +2,7 @@ import { Portal } from '@angular/cdk/portal';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { filter, map, tap } from 'rxjs/operators';
 import { Department } from '../models/department/department';
 import { Product } from '../models/product/product';
 import { DepartmentService } from './department.service';
@@ -22,7 +22,7 @@ export class ProductService {
     private departmentService: DepartmentService
   ) {}
 
-  get(flag?: string): Observable<Product[]> {
+  get(): Observable<Product[]> {
     if (!this.loaded) {
       combineLatest([
         this.http.get<Product[]>(`${this.url}`),
@@ -30,6 +30,9 @@ export class ProductService {
       ])
         .pipe(
           tap(([products, departments]) => console.log(products, departments)),
+          filter(
+            ([products, departments]) => products != null && departments != null
+          ),
           map(([products, departments]) => {
             products.forEach((product) => {
               let ids = product.departments as number[];

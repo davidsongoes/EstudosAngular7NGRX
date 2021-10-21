@@ -19,6 +19,10 @@
     {
       "name": "Dep5",
       "id": 5
+    },
+    {
+      "name": "Dep6",
+      "id": 6
     }
   ],
   "products": [
