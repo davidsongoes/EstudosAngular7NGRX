@@ -6,7 +6,13 @@
   <span>My Store</span>
   <span></span>
   <div fxLayoutGap="20px">
-    <a mat-raised-button color="accent" href="/dvd">DVDs</a>
-    <a mat-raised-button color="accent" href="/book">Books</a>
+    <a mat-raised-button routerLinkActive="mat-accent" routerLink="/dvds"
+      >DVDs</a
+    >
+    <a mat-raised-button routerLinkActive="mat-accent" routerLink="/books"
+      >Books</a
+    >
   </div>
 </mat-toolbar>
+
+<router-outlet></router-outlet>

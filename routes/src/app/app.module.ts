@@ -8,6 +8,8 @@ import { BookComponent } from './book/book.component';
 import { DvdComponent } from './dvd/dvd.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { RouterModule, Routes } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MaterialModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
