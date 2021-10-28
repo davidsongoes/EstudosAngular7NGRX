@@ -2,7 +2,7 @@ name: Angular Build
 
 on:
   push:
-    branches: [develop, pull_request]
+    branches: [develop, pull_request, master, main]
   pull_request:
     branches: [develop, pull_request]
 
