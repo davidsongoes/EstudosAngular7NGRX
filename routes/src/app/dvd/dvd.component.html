@@ -1,5 +1,7 @@
 <mat-list>
-  <h2 mat-subheader>DVD List</h2>
+  <div fxLayout="row" fxLayoutAlign="space-between">
+    <h2 mat-subheader>DVD List</h2>
+  </div>
   <mat-list-item *ngFor="let dvd of dvds$ | async; let i = index">
     <mat-icon mat-list-icon>album</mat-icon>
     <h4 mat-line>{{ dvd.title }}</h4>
