@@ -8,7 +8,7 @@ import { Dvd } from '../models/dvd';
 })
 export class DvdService {
   private dvdSubject$: BehaviorSubject<Dvd[]> = new BehaviorSubject<Dvd[]>([]);
-  private dvd$ = this.dvdSubject$.asObservable();
+  public dvds$ = this.dvdSubject$.asObservable();
 
   constructor() {
     timer(2000).subscribe(() => {
@@ -27,18 +27,16 @@ export class DvdService {
   }
 
   get(index: number): Observable<Dvd | null> {
-    return this.dvd$.pipe(
-      map((books) =>
-        index >= 0 && index < books.length ? books[index] : null
-      ),
+    return this.dvds$.pipe(
+      map((dvds) => (index >= 0 && index < dvds.length ? dvds[index] : null)),
       delay(1000)
     );
   }
 
   remove(index: number): void {
-    let books = this.dvdSubject$.getValue();
-    if (index >= 0 && index < books.length) {
-      books.splice(index, 1);
+    let dvds = this.dvdSubject$.getValue();
+    if (index >= 0 && index < dvds.length) {
+      dvds.splice(index, 1);
     }
   }
 }

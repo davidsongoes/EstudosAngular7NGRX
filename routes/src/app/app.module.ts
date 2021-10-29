@@ -10,6 +10,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
+import { DvdDetailComponent } from './dvd/dvd-detail/dvd-detail.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { AppRoutingModule } from './app-routing.module';
     BookComponent,
     DvdComponent,
     PageNotFoundComponent,
+    DvdDetailComponent,
   ],
   imports: [
     BrowserModule,
