@@ -1,0 +1,18 @@
+.loading {
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  top: 30%;
+}
+.btn {
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  top: 20%;
+}
+.title {
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  top: 10%;
+}

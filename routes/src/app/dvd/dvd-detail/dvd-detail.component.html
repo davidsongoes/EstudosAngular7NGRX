@@ -1,8 +1,14 @@
-<button mat-raised-button routerLink="">Voltar</button>
-<ul *ngIf="dvds$ | async; else loading">
-  <li></li>
+<h2 class="title" *ngIf="title">{{ title }}</h2>
+<ul *ngIf="dvds$ | async as dvd; else loading">
+  <li>Title: {{ dvd.title }}</li>
+  <li>Year: {{ dvd.year }}</li>
+  <li>Genre: {{ dvd.genre }}</li>
 </ul>
 
 <ng-template #loading>
-  <mat-spinner [mode]="indeterminate"> </mat-spinner>
+  <mat-spinner class="loading"> </mat-spinner>
 </ng-template>
+
+<button class="btn" mat-raised-button color="warn" (click)="goBack()">
+  Back
+</button>

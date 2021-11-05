@@ -29,7 +29,7 @@ export class DvdService {
   get(index: number): Observable<Dvd | null> {
     return this.dvds$.pipe(
       map((dvds) => (index >= 0 && index < dvds.length ? dvds[index] : null)),
-      delay(1000)
+      delay(500)
     );
   }
 
