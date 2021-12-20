@@ -11,6 +11,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { DvdDetailComponent } from './dvd/dvd-detail/dvd-detail.component';
+import { DvdEditComponent } from './dvd/dvd-edit/dvd-edit.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,8 +21,11 @@ import { DvdDetailComponent } from './dvd/dvd-detail/dvd-detail.component';
     DvdComponent,
     PageNotFoundComponent,
     DvdDetailComponent,
+    DvdEditComponent,
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     MaterialModule,
     BrowserAnimationsModule,
