@@ -3,10 +3,13 @@
   <a
     mat-list-item
     *ngFor="let book of books$ | async; let i = index"
-    routerLink="/books/{{ i }}"
+    routerLink="{{ i }}"
   >
     <mat-icon mat-list-icon>library_books</mat-icon>
     <h4 mat-line>{{ book.title }}</h4>
     <h5 mat-line>Pages: {{ book.pages }}</h5>
   </a>
 </mat-nav-list>
+<mat-divider> </mat-divider>
+<router-outlet></router-outlet>
+<mat-divider> </mat-divider>

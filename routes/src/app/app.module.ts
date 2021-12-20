@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { DvdDetailComponent } from './dvd/dvd-detail/dvd-detail.component';
 import { DvdEditComponent } from './dvd/dvd-edit/dvd-edit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BookDetailComponent } from './book/book-detail/book-detail.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PageNotFoundComponent,
     DvdDetailComponent,
     DvdEditComponent,
+    BookDetailComponent,
   ],
   imports: [
     FormsModule,

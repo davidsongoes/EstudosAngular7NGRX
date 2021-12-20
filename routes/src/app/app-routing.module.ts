@@ -6,10 +6,15 @@ import { BookComponent } from './book/book.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DvdDetailComponent } from './dvd/dvd-detail/dvd-detail.component';
 import { DvdEditComponent } from './dvd/dvd-edit/dvd-edit.component';
+import { BookDetailComponent } from './book/book-detail/book-detail.component';
 
 const appRoutes: Routes = [
   { path: 'dvds', component: DvdComponent },
-  { path: 'books', component: BookComponent },
+  {
+    path: 'books',
+    component: BookComponent,
+    children: [{ path: ':index', component: BookDetailComponent }],
+  },
   { path: 'dvds/add', component: DvdEditComponent },
   { path: 'dvds/:index', component: DvdDetailComponent },
   { path: '', pathMatch: 'full', redirectTo: 'dvds' },

@@ -33,14 +33,14 @@ export class BookService {
       map((books) =>
         index >= 0 && index < books.length ? books[index] : null
       ),
-      delay(1000)
+      delay(500)
     );
   }
 
-  remove(index: number): void {
+  remove(index: number | null): void {
     let books = this.bookSubject$.getValue();
-    if (index >= 0 && index < books.length) {
-      books.splice(index, 1);
+    if (index! >= 0 && index! < books.length) {
+      books.splice(index!, 1);
     }
   }
 }
