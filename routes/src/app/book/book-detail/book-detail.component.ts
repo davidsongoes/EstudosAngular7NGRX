@@ -13,6 +13,7 @@ import { Book } from 'src/app/models/book';
 export class BookDetailComponent implements OnInit {
   index: number | null = null;
   books$: Observable<Book | null> | undefined;
+  authors: string[] | undefined;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -25,12 +26,21 @@ export class BookDetailComponent implements OnInit {
       tap((params: ParamMap) => (this.index = +params.get('index')!)),
       switchMap((params: ParamMap) =>
         this.bookService.get(+params.get('index')!)
+      ),
+      tap(
+        (book: Book | null) =>
+          (this.authors = book?.authors ? book.authors : [])
       )
     );
   }
 
   remove(): void {
     this.bookService.remove(this.index);
-    this.router.navigate(['books']);
+    this.router.navigateByUrl('books');
+  }
+
+  goAuthors(): void {
+    let url = '/books/' + this.index + '/authors';
+    this.router.navigate([url, { authors: this.authors }]);
   }
 }

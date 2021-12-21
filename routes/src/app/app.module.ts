@@ -14,6 +14,7 @@ import { DvdDetailComponent } from './dvd/dvd-detail/dvd-detail.component';
 import { DvdEditComponent } from './dvd/dvd-edit/dvd-edit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BookDetailComponent } from './book/book-detail/book-detail.component';
+import { BookAuthorsComponent } from './book/book-authors/book-authors.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { BookDetailComponent } from './book/book-detail/book-detail.component';
     DvdDetailComponent,
     DvdEditComponent,
     BookDetailComponent,
+    BookAuthorsComponent,
   ],
   imports: [
     FormsModule,
