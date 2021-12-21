@@ -15,6 +15,7 @@ import { DvdEditComponent } from './dvd/dvd-edit/dvd-edit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BookDetailComponent } from './book/book-detail/book-detail.component';
 import { BookAuthorsComponent } from './book/book-authors/book-authors.component';
+import { EletronicsModule } from './eletronics/eletronics.module';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { BookAuthorsComponent } from './book/book-authors/book-authors.component
     BrowserAnimationsModule,
     FlexLayoutModule,
     AppRoutingModule,
+    EletronicsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
