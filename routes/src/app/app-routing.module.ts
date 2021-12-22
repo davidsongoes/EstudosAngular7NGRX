@@ -8,6 +8,7 @@ import { DvdDetailComponent } from './dvd/dvd-detail/dvd-detail.component';
 import { DvdEditComponent } from './dvd/dvd-edit/dvd-edit.component';
 import { BookDetailComponent } from './book/book-detail/book-detail.component';
 import { BookAuthorsComponent } from './book/book-authors/book-authors.component';
+import { EletronicsModule } from './eletronics/eletronics.module';
 
 const appRoutes: Routes = [
   { path: 'dvds', component: DvdComponent },
@@ -21,6 +22,11 @@ const appRoutes: Routes = [
         children: [{ path: 'authors', component: BookAuthorsComponent }],
       },
     ],
+  },
+  {
+    path: 'eletronics',
+    loadChildren: () =>
+      import('./eletronics/eletronics.module').then((m) => m.EletronicsModule),
   },
   { path: 'dvds/add', component: DvdEditComponent },
   { path: 'dvds/:index', component: DvdDetailComponent },

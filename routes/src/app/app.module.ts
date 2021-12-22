@@ -35,7 +35,6 @@ import { EletronicsModule } from './eletronics/eletronics.module';
     MaterialModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-    EletronicsModule,
     AppRoutingModule,
   ],
   providers: [],

@@ -4,8 +4,8 @@ import { EletronicListComponent } from './eletronic-list/eletronic-list.componen
 import { EletronicsDetailComponent } from './eletronic-list/eletronics-detail/eletronics-detail.component';
 
 const routes: Routes = [
-  { path: 'eletronics', component: EletronicListComponent },
-  { path: 'eletronics/:index', component: EletronicsDetailComponent },
+  { path: '', component: EletronicListComponent },
+  { path: ':index', component: EletronicsDetailComponent },
 ];
 
 @NgModule({
