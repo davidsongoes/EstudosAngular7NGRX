@@ -15,5 +15,7 @@ export class EletronicListComponent implements OnInit {
 
   constructor(private eletronicService: EletronicService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.eletronics$ = this.eletronicService.eletronics$;
+  }
 }
