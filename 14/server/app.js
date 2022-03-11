@@ -9,7 +9,7 @@ app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(cors());
 
-mongoose.connect("mongodb://localhost:27017/auth_test", {
+mongoose.connect("mongodb://172.17.0.2:27017/auth_test", {
   useNewUrlParser: true,
 });
 

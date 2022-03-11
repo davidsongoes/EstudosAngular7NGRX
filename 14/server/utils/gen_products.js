@@ -2,7 +2,7 @@ var mongoose = require("mongoose");
 var faker = require("faker");
 var ProductModel = require("../models/ProductModel");
 
-mongoose.connect("mongodb://localhost:27017/auth_test", {
+mongoose.connect("mongodb://172.17.0.2:27017/auth_test", {
   useNewUrlParser: true,
 });
 
@@ -22,4 +22,5 @@ async function add(numberOfRecords) {
 
 add(100).then(() => {
   console.log("Products createds with success!");
+  mongoose.disconnect();
 });
